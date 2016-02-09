@@ -164,7 +164,6 @@ class PAK:
         ARCHIVE_SIZE = fStream.ReadBEUInt64()
         ALIGN = fStream.ReadBEUInt64()
         for i in xrange(FILE_NUMS):
-            #print("%s//%s"%(self.dest_folder , tmp[i][1]))
             dest_dir = os.path.split("%s//%s"%(self.dest_folder , tmp[i][1]))[0]
             if not os.path.exists(dest_dir):os.makedirs(dest_dir)
 
@@ -172,7 +171,6 @@ class PAK:
             SIZE = fStream.ReadBEUInt64()
             ZSIZE = fStream.ReadBEUInt64()
             comFlag = fStream.ReadBEUInt64()
-            #print("%08x\t%08x\t%08x\t"%(OFFSET,SIZE,ZSIZE))
             BACK_OFF = fp.tell()
             if comFlag != 1:
                 print("ERROR:%08x"%OFFSET)
