@@ -164,6 +164,7 @@ class PAK:
         ARCHIVE_SIZE = fStream.ReadBEUInt64()
         ALIGN = fStream.ReadBEUInt64()
         for i in xrange(FILE_NUMS):
+            #print("%s//%s"%(self.dest_folder , tmp[i][1]))
             dest_dir = os.path.split("%s//%s"%(self.dest_folder , tmp[i][1]))[0]
             if not os.path.exists(dest_dir):os.makedirs(dest_dir)
 
@@ -171,6 +172,7 @@ class PAK:
             SIZE = fStream.ReadBEUInt64()
             ZSIZE = fStream.ReadBEUInt64()
             comFlag = fStream.ReadBEUInt64()
+            #print("%08x\t%08x\t%08x\t"%(OFFSET,SIZE,ZSIZE))
             BACK_OFF = fp.tell()
             if comFlag != 1:
                 print("ERROR:%08x"%OFFSET)
@@ -254,8 +256,8 @@ class PAK:
                 SIZE = fStream.ReadBEUInt64()
                 ZSIZE = fStream.ReadBEUInt64()
                 comFlag = fStream.ReadBEUInt64()
-                if math_sector_align(ZSIZE,0x800) <= math_sector_align(ZSIZE,0x800):
-                    #print("USE INJECT METHOD")
+                if math_sector_align(len(zdata),0x800) <= math_sector_align(ZSIZE,0x800):
+                    print("USE INJECT METHOD")
                     dest.seek(OFFSET)
                     dest.write(zdata)
                     tmp_offset = OFFSET + len(zdata)
@@ -279,7 +281,7 @@ class PAK:
                         elf_file.seek((file_id + 358) * 8 + 0x015A0B3B)
                         elf_file.write(struct.pack(">I" , dsize))
                 else:
-                    #print("USE EXTEND METHOD")
+                    print("USE EXTEND METHOD")
                     dest.seek(0,2)
                     i_offset = dest.tell()
                     dest.write(zdata)
@@ -308,10 +310,8 @@ class PAK:
         dest.write(struct.pack(">Q" , end_offset))
         dest.close()
         elf_file.close()
-        
+        fixRPX("import\\main.elf", "import\\backup.rpx" , "import\\lens5_cafe.rpx")
 
 pak = PAK()
-pak.unpack()
-#pak.inject()
-fixRPX("import\\main.elf", "import\\backup.rpx" , "import\\lens5_cafe.rpx")
+pak.inject()
 os.system("pause")
