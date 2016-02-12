@@ -26,12 +26,18 @@
     <Compile Include="font_tool\bffnt2dds.py" />
     <Compile Include="font_tool\bffntBuilder.py" />
     <Compile Include="font_tool\bffnt_tool.py" />
+    <Compile Include="image_tool\bflim2dds.py" />
+    <Compile Include="image_tool\FIND_SARC.py" />
+    <Compile Include="image_tool\runDDS2GTX.py" />
+    <Compile Include="image_tool\SARCExtract.py" />
+    <Compile Include="image_tool\SARCPack.py" />
     <Compile Include="text_tool\repack_text.py" />
     <Compile Include="text_tool\unpack_text.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="font_tool\" />
     <Folder Include="font_tool\plugins\" />
+    <Folder Include="image_tool\" />
     <Folder Include="text_tool\" />
     <Folder Include="text_tool\cntext\" />
     <Folder Include="text_tool\import\" />
