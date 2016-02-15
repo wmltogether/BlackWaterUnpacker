@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlackWaterPatcher\MainForm.py" />
+    <Compile Include="BlackWaterPatcher\Program.py" />
+    <Compile Include="BlackWaterPatcher\util.py" />
     <Compile Include="BlackWaterTool.py" />
     <Compile Include="font_tool\bffnt2dds.py" />
     <Compile Include="font_tool\bffntBuilder.py" />
@@ -35,6 +38,12 @@
     <Compile Include="text_tool\unpack_text.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BlackWaterPatcher\" />
+    <Folder Include="BlackWaterPatcher\bin\" />
+    <Folder Include="BlackWaterPatcher\bin\Debug\" />
+    <Folder Include="BlackWaterPatcher\bin\Debug\patch\" />
+    <Folder Include="BlackWaterPatcher\obj\" />
+    <Folder Include="BlackWaterPatcher\obj\Debug\" />
     <Folder Include="font_tool\" />
     <Folder Include="font_tool\plugins\" />
     <Folder Include="image_tool\" />
@@ -46,6 +55,21 @@
     <Folder Include="text_tool\ustext\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BlackWaterPatcher\app.config" />
+    <Content Include="BlackWaterPatcher\bin\Debug\BlackWaterPatcher.dll" />
+    <Content Include="BlackWaterPatcher\bin\Debug\BlackWaterPatcher.exe" />
+    <Content Include="BlackWaterPatcher\bin\Debug\BlackWaterPatcher.exe.config" />
+    <Content Include="BlackWaterPatcher\bin\Debug\IronPython.dll" />
+    <Content Include="BlackWaterPatcher\bin\Debug\IronPython.Modules.dll" />
+    <Content Include="BlackWaterPatcher\bin\Debug\patch\dpfilelist.txt" />
+    <Content Include="BlackWaterPatcher\BlackWaterPatcher.pyproj" />
+    <Content Include="BlackWaterPatcher\MainForm.resx" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.dll" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.exe" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.MainForm.resources" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.pyproj.FileListAbsolute.txt" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.pyproj.GenerateResource.Cache" />
+    <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.pyprojResolveAssemblyReference.cache" />
     <Content Include="font_tool\37x38的tile，压缩使用BC4.txt" />
     <Content Include="font_tool\AMDCompressCLI.exe" />
     <Content Include="font_tool\bffnt2charlist.exe" />
