@@ -31,7 +31,7 @@ class PAK:
 		for line in lines:
 			if "=" in line:
 				file_id = int(line.split("=")[0])
-				file_name = line.split("=")[1].replace("\r\n" , "")
+				file_name = line.split("=")[1].replace("\r\n" , "").upper()
 				dict[file_name] = file_id
 		fp.close()
 		return dict
@@ -173,7 +173,7 @@ class PAK:
 		for fn in fl:
 			pname = fn[len(self.patch_folder):]
 			pname = pname.replace("\\" ,"/")
-			if pname in dict:
+			if pname.upper() in dict:
 				s_nums += 1
 				print("patching :%s"%pname)
 				file_id = dict[pname]
@@ -241,23 +241,23 @@ class PAK:
 		FILE_NUMS = fStream.ReadBEUInt32()
 		ARCHIVE_SIZE = fStream.ReadBEUInt64()
 		ALIGN = fStream.ReadBEUInt64()
-		for file_id in xrange(FILE_NUMS):
-			OFFSET = fStream.ReadBEUInt64()
-			SIZE = fStream.ReadBEUInt64()
-			ZSIZE = fStream.ReadBEUInt64()
+		for n in xrange(FILE_NUMS):
+			currentOFFSET = fStream.ReadBEUInt64()
+			currentSIZE = fStream.ReadBEUInt64()
+			currentZSIZE = fStream.ReadBEUInt64()
 			comFlag = fStream.ReadBEUInt64()
-			if 0 <= file_id <= 1409:
-				elf_file.seek(file_id * 8 + 0x015A0B3B)
-				elf_file.write(struct.pack(">I" , dsize))
-			elif 1410 <= file_id <= 2526:
-				elf_file.seek((file_id + 76) * 8 + 0x015A0B3B)
-				elf_file.write(struct.pack(">I" , dsize))
-			elif 2527 <= file_id <= 2643:
-				elf_file.seek((file_id + 356) * 8 + 0x015A0B3B)
-				elf_file.write(struct.pack(">I" , dsize))
+			if 0 <= n <= 1409:
+				elf_file.seek(n * 8 + 0x015A0B3B)
+				elf_file.write(struct.pack(">I" , currentSIZE))
+			elif 1410 <= n <= 2526:
+				elf_file.seek((n + 76) * 8 + 0x015A0B3B)
+				elf_file.write(struct.pack(">I" , currentSIZE))
+			elif 2527 <= n <= 2643:
+				elf_file.seek((n + 356) * 8 + 0x015A0B3B)
+				elf_file.write(struct.pack(">I" , currentSIZE))
 			else:
-				elf_file.seek((file_id + 358) * 8 + 0x015A0B3B)
-				elf_file.write(struct.pack(">I" , dsize))
+				elf_file.seek((n + 358) * 8 + 0x015A0B3B)
+				elf_file.write(struct.pack(">I" , currentSIZE))
 		dest.seek(0,2)
 		end_offset = dest.tell()
 		dest.seek(0x10,0)

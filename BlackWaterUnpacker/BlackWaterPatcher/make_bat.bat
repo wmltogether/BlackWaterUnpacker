@@ -1,0 +1,1 @@
+ipy pyc.py /standalone /main:Program.py MainForm.py util.py /embed /target:winexe /out:BlackWaterPatcher.exe

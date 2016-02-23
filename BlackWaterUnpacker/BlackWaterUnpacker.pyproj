@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="BlackWaterPatcher\MainForm.py" />
     <Compile Include="BlackWaterPatcher\Program.py" />
+    <Compile Include="BlackWaterPatcher\pyc.py" />
     <Compile Include="BlackWaterPatcher\util.py" />
     <Compile Include="BlackWaterTool.py" />
     <Compile Include="font_tool\bffnt2dds.py" />
@@ -64,6 +65,7 @@
     <Content Include="BlackWaterPatcher\bin\Debug\patch\dpfilelist.txt" />
     <Content Include="BlackWaterPatcher\BlackWaterPatcher.pyproj" />
     <Content Include="BlackWaterPatcher\MainForm.resx" />
+    <Content Include="BlackWaterPatcher\make_bat.bat" />
     <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.dll" />
     <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.exe" />
     <Content Include="BlackWaterPatcher\obj\Debug\BlackWaterPatcher.MainForm.resources" />
